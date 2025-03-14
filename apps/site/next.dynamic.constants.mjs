@@ -7,6 +7,7 @@ import {
 import { BASE_PATH, BASE_URL } from './next.constants.mjs';
 import { siteConfig } from './next.json.mjs';
 import { defaultLocale } from './next.locales.mjs';
+import provideReleaseData from './next-data/providers/releaseData';
 
 /**
  * This is a list of all static routes or pages from the Website that we do not
@@ -20,6 +21,8 @@ export const IGNORED_ROUTES = [
     locale !== defaultLocale.code && /^blog/.test(pathname),
   // This is used to ignore all pathnames that are empty
   ({ locale, pathname }) => locale.length && !pathname.length,
+  // This is used to ignore the simplified downloads page from static generation
+  ({ pathname }) => pathname.endsWith('/download/simplified'),
 ];
 
 /**
@@ -43,6 +46,10 @@ export const DYNAMIC_ROUTES = new Map([
     .map(paths => paths.map(path => [path, 'blog-category']))
     // flattens the array since we have a .map inside another .map
     .flat(),
+  // Provides Routes for all Node.js major version download pages
+  ['en/download/simplified', 'download-simple'],
+  // Add dynamic routes for each major version
+  ...provideReleaseData().map(release => [`en/download/${release.major}`, 'download-simple']),
 ]);
 
 /**
