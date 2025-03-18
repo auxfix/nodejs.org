@@ -4,10 +4,10 @@ import {
   provideBlogCategories,
   provideBlogPosts,
 } from './next-data/providers/blogData';
+import provideReleaseData from './next-data/providers/releaseData';
 import { BASE_PATH, BASE_URL } from './next.constants.mjs';
 import { siteConfig } from './next.json.mjs';
 import { defaultLocale } from './next.locales.mjs';
-import provideReleaseData from './next-data/providers/releaseData';
 
 /**
  * This is a list of all static routes or pages from the Website that we do not
@@ -49,7 +49,10 @@ export const DYNAMIC_ROUTES = new Map([
   // Provides Routes for all Node.js major version download pages
   ['en/download/simplified', 'download-simple'],
   // Add dynamic routes for each major version
-  ...provideReleaseData().map(release => [`en/download/${release.major}`, 'download-simple']),
+  ...provideReleaseData().map(release => [
+    `en/download/${release.major}`,
+    'download-simple',
+  ]),
 ]);
 
 /**
