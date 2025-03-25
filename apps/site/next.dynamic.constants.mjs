@@ -21,8 +21,6 @@ export const IGNORED_ROUTES = [
     locale !== defaultLocale.code && /^blog/.test(pathname),
   // This is used to ignore all pathnames that are empty
   ({ locale, pathname }) => locale.length && !pathname.length,
-  // This is used to ignore the simplified downloads page from static generation
-  ({ pathname }) => pathname.endsWith('/download/simplified'),
 ];
 
 /**
@@ -47,7 +45,7 @@ export const DYNAMIC_ROUTES = new Map([
     // flattens the array since we have a .map inside another .map
     .flat(),
   // Provides Routes for all Node.js major version download pages
-  ['en/download/simplified', 'download-simple'],
+  ['en/download/simplified', 'download-simple-static'],
   // Add dynamic routes for each major version
   ...provideReleaseData().map(release => [
     `en/download/${release.major}`,

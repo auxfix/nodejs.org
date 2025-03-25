@@ -1,10 +1,124 @@
 ---
-layout: download-simple
+layout: download-simple-static
 title: Download Node.js
 ---
 
-<section>
+{/* This page is fully static - all dynamic content is rendered at build time */}
 
-Test simplified version(no context)
+<section className="simplifiedDownload">
+  <h2>Download Node.js</h2>
 
+  <div className="downloadSimpleContainer">
+    <div className="downloadSimpleItem">
+      {/* LTS version information rendered at build time */}
+      <h3>LTS Version: <WithNodeRelease status={['LTS']}>{({ release }) => release.versionWithPrefix}</WithNodeRelease></h3>
+      <p>Recommended for most users</p>
+      <WithNodeRelease status={['LTS']}>
+        {({ release }) => (
+          <div className="downloadMatrix">
+            <div className="downloadMatrixItem">
+              <h4>Windows Installer</h4>
+              <div className="downloadLinks">
+                <Release.DownloadLink release={release} platform="win" arch="x86">32-bit</Release.DownloadLink>
+                <Release.DownloadLink release={release} platform="win" arch="x64">64-bit</Release.DownloadLink>
+              </div>
+            </div>
+
+            <div className="downloadMatrixItem">
+              <h4>macOS Installer</h4>
+              <div className="downloadLinks">
+                <Release.DownloadLink release={release} platform="osx" arch="x64">64-bit</Release.DownloadLink>
+                <Release.DownloadLink release={release} platform="osx" arch="arm64">Apple Silicon</Release.DownloadLink>
+              </div>
+            </div>
+
+            <div className="downloadMatrixItem">
+              <h4>Linux Binaries</h4>
+              <div className="downloadLinks">
+                <Release.DownloadLink release={release} platform="linux" arch="x64">64-bit</Release.DownloadLink>
+                <Release.DownloadLink release={release} platform="linux" arch="arm64">ARM64</Release.DownloadLink>
+              </div>
+            </div>
+
+            <div className="downloadMatrixItem">
+              <h4>Source Code</h4>
+              <div className="downloadLinks">
+                <Release.DownloadLink release={release} kind="source">Source Code</Release.DownloadLink>
+              </div>
+            </div>
+          </div>
+        )}
+      </WithNodeRelease>
+    </div>
+
+    <div className="downloadSimpleItem">
+      {/* Current version information rendered at build time */}
+      <h3>Current Version: <WithNodeRelease status={['Current']}>{({ release }) => release.versionWithPrefix}</WithNodeRelease></h3>
+      <p>Latest features</p>
+      <WithNodeRelease status={['Current']}>
+        {({ release }) => (
+          <div className="downloadMatrix">
+            <div className="downloadMatrixItem">
+              <h4>Windows Installer</h4>
+              <div className="downloadLinks">
+                <Release.DownloadLink release={release} platform="win" arch="x86">32-bit</Release.DownloadLink>
+                <Release.DownloadLink release={release} platform="win" arch="x64">64-bit</Release.DownloadLink>
+              </div>
+            </div>
+
+            <div className="downloadMatrixItem">
+              <h4>macOS Installer</h4>
+              <div className="downloadLinks">
+                <Release.DownloadLink release={release} platform="osx" arch="x64">64-bit</Release.DownloadLink>
+                <Release.DownloadLink release={release} platform="osx" arch="arm64">Apple Silicon</Release.DownloadLink>
+              </div>
+            </div>
+
+            <div className="downloadMatrixItem">
+              <h4>Linux Binaries</h4>
+              <div className="downloadLinks">
+                <Release.DownloadLink release={release} platform="linux" arch="x64">64-bit</Release.DownloadLink>
+                <Release.DownloadLink release={release} platform="linux" arch="arm64">ARM64</Release.DownloadLink>
+              </div>
+            </div>
+
+            <div className="downloadMatrixItem">
+              <h4>Source Code</h4>
+              <div className="downloadLinks">
+                <Release.DownloadLink release={release} kind="source">Source Code</Release.DownloadLink>
+              </div>
+            </div>
+          </div>
+        )}
+      </WithNodeRelease>
+    </div>
+
+  </div>
+</section>
+
+<section className="simplifiedDownload">
+  <h2>Additional Resources</h2>
+  <ul>
+    <li>
+      <a href="https://nodejs.org/download/nightly/">Nightly builds</a>
+    </li>
+    <li>
+      <a href="https://nodejs.org/download/release/">Previous releases</a>
+    </li>
+    <li>
+      <a href="https://nodejs.org/download/package-manager/">
+        Installing Node.js via package manager
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/nodejs/node#verifying-binaries">
+        Verifying Binaries
+      </a>
+    </li>
+    <li>
+      <a href="https://unofficial-builds.nodejs.org/download/">
+        Unofficial builds
+      </a>
+    </li>
+  </ul>
 </section>

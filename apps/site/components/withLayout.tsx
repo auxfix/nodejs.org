@@ -5,6 +5,8 @@ import ArticlePageLayout from '@/layouts/ArticlePage';
 import BlogLayout from '@/layouts/Blog';
 import DefaultLayout from '@/layouts/Default';
 import DownloadLayout from '@/layouts/Download';
+import DownloadSimpleLayout from '@/layouts/DownloadSimple';
+import DownloadSimpleStaticLayout from '@/layouts/DownloadSimpleStatic';
 import GlowingBackdropLayout from '@/layouts/GlowingBackdrop';
 import LearnLayout from '@/layouts/Learn';
 import PostLayout from '@/layouts/Post';
@@ -18,6 +20,8 @@ const layouts = {
   'blog-post': PostLayout,
   'blog-category': BlogLayout,
   download: DownloadLayout,
+  'download-simple': DownloadSimpleLayout,
+  'download-simple-static': DownloadSimpleStaticLayout,
   article: ArticlePageLayout,
 } satisfies Record<Layouts, FC>;
 
